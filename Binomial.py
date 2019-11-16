@@ -1,4 +1,5 @@
 #paneles
+import math
 import tkinter as tk
 from tkinter import simpledialog
 
@@ -51,9 +52,7 @@ binomial = stats.binom(n, p) # Distribución
 x = np.arange(binomial.ppf(0.0001),
               binomial.ppf(0.99))
 
-Vx = np.arange(binomial.ppf(0),
-              binomial.ppf(1))
-Ex=binomial.pmf(Vx)
+
 
 fmp = binomial.pmf(x) # Función de Masa de Probabilidad
 
@@ -65,11 +64,35 @@ plt.title('Distribución Binomial')
 plt.ylabel('probabilidad')
 plt.xlabel('valores')
 
-print("V(x)= " + str((np.var(Ex)*1000)) )
-print("E(x)= " + str((np.median(Ex)*1000)) )
+Ex=0
+lista_Ex = list(map(lambda x,y: x*y, x, fmp))
 
 
-print(tabulate({"x": x,"p": fmp}, headers="keys"))
+for l in lista_Ex:
+    Ex=Ex+l
+
+
+
+
+xi2 = list(map(lambda x,y: x*y, x, x))
+
+
+Vx=0
+lista_Vx = list(map(lambda x,y: x*y, xi2, fmp))
+
+for l in lista_Vx:
+    Vx=Vx+l
+
+print("Varianza = "+ str(Vx-(math.pow(Ex,2))))
+print("Esperanza = "+ str(Ex))
+
+
+
+
+
+
+
+print(tabulate({"x": x,"p": fmp,"Ex":lista_Ex,"Vx":lista_Vx}, headers="keys"))
 
 plt.show()
 
