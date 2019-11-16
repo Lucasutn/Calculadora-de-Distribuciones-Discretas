@@ -64,6 +64,8 @@ plt.title('Distribución Binomial')
 plt.ylabel('probabilidad')
 plt.xlabel('valores')
 
+# Varianza y Esperanza
+
 Ex=0
 lista_Ex = list(map(lambda x,y: x*y, x, fmp))
 

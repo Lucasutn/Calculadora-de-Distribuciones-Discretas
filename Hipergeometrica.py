@@ -36,7 +36,7 @@ n=float(simpledialog.askstring("Distribucion Binomial", "Ingrese el valor de N :
 # N, x, n = 10, 4, 5 # parametros de forma
 
 hipergeometrica = stats.hypergeom(N, X, n) # Distribución
-x = np.arange(0, X+1)
+x = np.arange(0, n+1)
 fmp = hipergeometrica.pmf(x) # Función de Masa de Probabilidad
 
 
@@ -48,8 +48,32 @@ plt.title('Distribución Hipergeométrica')
 plt.ylabel('probabilidad')
 plt.xlabel('valores')
 
+# Varianza y Ex
+
+Ex=0
+lista_Ex = list(map(lambda x,y: x*y, x, fmp))
+
+
+for l in lista_Ex:
+    Ex=Ex+l
 
 
 
-print(tabulate({"x": x,"p": fmp}, headers="keys"))
+
+xi2 = list(map(lambda x,y: x*y, x, x))
+
+
+Vx=0
+lista_Vx = list(map(lambda x,y: x*y, xi2, fmp))
+
+for l in lista_Vx:
+    Vx=Vx+l
+
+print("Varianza = "+ str(Vx-(math.pow(Ex,2))))
+print("Esperanza = "+ str(Ex))
+
+
+
+print(tabulate({"x": x,"p": fmp,"Ex":lista_Ex,"Vx":lista_Vx}, headers="keys"))
+
 plt.show()
