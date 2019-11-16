@@ -23,28 +23,20 @@ np.random.seed(2016) # replicar random
 
 
 
+# Graficando Poisson
 
 # Ingreso de datos
-N=int(simpledialog.askstring("Distribucion Hipergeometrica", "Ingrese el valor de N : ",
+
+mu=float(simpledialog.askstring("Distribución Poisson", "Ingrese el valor de p : ",
                                 parent=application_window))
-
-X=float(simpledialog.askstring("Distribucion Binomial", "Ingrese el valor de X : ",
-                                parent=application_window))
-n=float(simpledialog.askstring("Distribucion Binomial", "Ingrese el valor de N : ",
-                                parent=application_window))
-
-# N, x, n = 10, 4, 5 # parametros de forma
-
-hipergeometrica = stats.hypergeom(N, X, n) # Distribución
-x = np.arange(0, n+1)
-fmp = hipergeometrica.pmf(x) # Función de Masa de Probabilidad
-
-
-
-
+#mu =  2.4 # parametro de forma
+poisson = stats.poisson(mu) # Distribución
+x = np.arange(poisson.ppf(0.01),
+              poisson.ppf(0.9999))
+fmp = poisson.pmf(x) # Función de Masa de Probabilidad
 plt.plot(x, fmp, '--')
 plt.vlines(x, 0, fmp, colors='b', lw=5, alpha=0.5)
-plt.title('Distribución Hipergeométrica')
+plt.title('Distribución Poisson')
 plt.ylabel('probabilidad')
 plt.xlabel('valores')
 
@@ -72,11 +64,13 @@ for l in lista_Vx:
 print("Varianza = "+ str(Vx-(math.pow(Ex,2))))
 print("Esperanza = "+ str(Ex))
 
-xV = (Vx - (math.pow(Ex, 2)))
+xV = (Vx-(math.pow(Ex,2)))
 
 print("D(x) = " + str(math.sqrt(xV)))
 
 
+
 print(tabulate({"x": x,"p": fmp,"Ex":lista_Ex,"Vx":lista_Vx}, headers="keys"))
+
 
 plt.show()

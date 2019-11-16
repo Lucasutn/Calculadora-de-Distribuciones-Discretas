@@ -88,8 +88,9 @@ for l in lista_Vx:
 print("Varianza = "+ str(Vx-(math.pow(Ex,2))))
 print("Esperanza = "+ str(Ex))
 
+xV = (Vx - (math.pow(Ex, 2)))
 
-
+print("D(x) = " + str(math.sqrt(xV)))
 
 
 
