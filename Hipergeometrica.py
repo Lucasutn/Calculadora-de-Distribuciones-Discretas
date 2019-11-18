@@ -28,9 +28,9 @@ np.random.seed(2016) # replicar random
 N=int(simpledialog.askstring("Distribucion Hipergeometrica", "Ingrese el valor de N : ",
                                 parent=application_window))
 
-X=float(simpledialog.askstring("Distribucion Binomial", "Ingrese el valor de X : ",
+X=float(simpledialog.askstring("Distribucion Hipergeometrica", "Ingrese el valor de X : ",
                                 parent=application_window))
-n=float(simpledialog.askstring("Distribucion Binomial", "Ingrese el valor de N : ",
+n=float(simpledialog.askstring("Distribucion Hipergeometrica", "Ingrese el valor de N : ",
                                 parent=application_window))
 
 # N, x, n = 10, 4, 5 # parametros de forma
@@ -77,6 +77,6 @@ xV = (Vx - (math.pow(Ex, 2)))
 print("D(x) = " + str(math.sqrt(xV)))
 
 
-print(tabulate({"x": x,"p": fmp,"Ex":lista_Ex,"Vx":lista_Vx}, headers="keys"))
+print(tabulate({"x": x,"p": fmp,"Xi * P(x)":lista_Ex,"Xi ^2 * P(x)":lista_Vx}, headers="keys"))
 
 plt.show()

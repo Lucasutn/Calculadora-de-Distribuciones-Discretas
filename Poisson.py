@@ -70,7 +70,7 @@ print("D(x) = " + str(math.sqrt(xV)))
 
 
 
-print(tabulate({"x": x,"p": fmp,"Ex":lista_Ex,"Vx":lista_Vx}, headers="keys"))
+print(tabulate({"x": x,"p": fmp,"Xi * P(x)":lista_Ex,"Xi ^2 * P(x)":lista_Vx}, headers="keys"))
 
 
 plt.show()
