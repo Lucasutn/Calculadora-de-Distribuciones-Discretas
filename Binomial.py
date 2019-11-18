@@ -58,8 +58,8 @@ fmp = binomial.pmf(x) # Función de Masa de Probabilidad
 
 
 
-plt.plot(x, fmp, '--')
-plt.vlines(x, 0, fmp, colors='b', lw=5, alpha=0.5)
+#plt.plot(x, fmp, '--')
+plt.vlines(x, 0, fmp, colors='black', lw=20, alpha=0.8)
 plt.title('Distribución Binomial')
 plt.ylabel('probabilidad')
 plt.xlabel('valores')
