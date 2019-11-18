@@ -57,8 +57,14 @@ x = np.arange(binomial.ppf(0.0001),
 fmp = binomial.pmf(x) # Función de Masa de Probabilidad
 
 
+img = plt.imread("pp.png")
+# fig, ax = plt.subplots()
+# x = range(300)
+# ax.imshow(img, extent=[0, 400, 0, 300])
+# ax.plot(x, x, '--', linewidth=5, color='firebrick')
 
-#plt.plot(x, fmp, '--')
+plt.plot(x, fmp, '--',linewidth=1, color='firebrick')
+plt.imshow(img,aspect="auto",extent=[0, 10, 0, 1],alpha=0.6)
 plt.vlines(x, 0, fmp, colors='black', lw=20, alpha=0.8)
 plt.title('Distribución Binomial')
 plt.ylabel('probabilidad')
